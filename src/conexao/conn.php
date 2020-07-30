@@ -1,4 +1,3 @@
-<!-- conn é a abreviatura de connection -->
 <?php
 
     // Demostre todos os erros e alertas existentes quanto ao meu código e interação com o B.D.
