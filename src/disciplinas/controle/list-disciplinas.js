@@ -27,6 +27,8 @@ $(document).ready(function() {
             }
 
             $('body').append('<script src="src/disciplinas/controle/view-disciplinas.js"></script>')
+            $('body').append('<script src="src/disciplinas/controle/edit-disciplinas.js"></script>')
+            $('body').append('<script src="src/disciplinas/controle/delete-disciplinas.js"></script>')
         }
     })
 })

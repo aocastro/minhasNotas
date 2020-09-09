@@ -15,7 +15,7 @@ function btnClose() {
 $(document).ready(function() {
 
     // Monitorar os cliques no botões com as classes btn-view
-    $('.btn-view').click(function(e) {
+    $('.btn-edit').click(function(e) {
         e.preventDefault()
 
         // Iremos capturar o id do botão clicado, para enviar ao nosso serviço em PHP
@@ -35,21 +35,33 @@ $(document).ready(function() {
 
                 $('#form').load('src/disciplinas/visao/adiciona-disciplinas.html', function() {
                     $('h4').empty()
-                    $('h4').append('Visualização de registro')
+                    $('h4').append('Edição de registro')
                     $('.btn-save').after('<button class="btn btn-secondary btn-block btn-close"><i class="mdi mdi-close"></i> Fechar</button>')
-                    $('.btn-save').hide()
-                    $('#nome').attr('disabled', true)
+                    $('.btn-save').addClass('btn-update').removeClass('btn-save')
                     $('#nome').val(dados[0].nome)
-                    $('#professor').attr('disabled', true)
                     $('#professor').val(dados[0].professor)
-                    $('#nota').attr('disabled', true)
-                    $('#nota').empty()
-                    $('#nota').append(`<option>${dados[0].nota}</option>`)
+                    switch (dados[0].nota) {
+                        case 'MB':
+                            var mencao = "Muito Bom"
+                            break
+                        case 'B':
+                            var mencao = "Bom"
+                            break
+                        case 'R':
+                            var mencao = "Regular"
+                            break
+                        case 'I':
+                            var mencao = "Insatisfatório"
+                            break
+                    }
+                    $('#nota').append(`<option value="${dados[0].nota}" selected>${mencao}</option>`)
+                    $('#nota').after(`<input type="hidden" name="id" id="id" value="${dados[0].id}">`)
 
                     btnClose()
 
                 })
 
+                $('body').append('<script src="src/disciplinas/controle/update-disciplinas.js"></script>')
 
             }
         })
