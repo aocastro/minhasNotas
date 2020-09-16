@@ -1,5 +1,17 @@
 $(document).ready(function() {
 
+    $('#adiciona-aluno').click(function(e) {
+        e.preventDefault()
+        $('#conteudo').empty()
+        $('#conteudo').load('src/alunos/visao/adiciona-alunos.html')
+    })
+
+    $('#listar-alunos').click(function(e) {
+        e.preventDefault()
+        $('#conteudo').empty()
+        $('#conteudo').load('src/alunos/visao/list-alunos.html')
+    })
+
     $('#adiciona').click(function(e) {
         e.preventDefault()
         $('#conteudo').empty()
