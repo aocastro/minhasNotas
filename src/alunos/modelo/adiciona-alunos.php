@@ -5,6 +5,8 @@
 
     $nome = $_REQUEST['nome'];
     $curso = $_REQUEST['curso'];
+    $senha = $_REQUEST['senha'];
+    $senha = md5($senha);
     $tipo = $_REQUEST['tipo'];
 
     // Verificando se os campos foram preenchidos
@@ -15,7 +17,7 @@
         );
     }else{
         // Criaremos uma variável para receber os comandos SQL
-        $sql = "INSERT INTO alunos (nome, curso, tipo) VALUES ('".$nome."', '".$curso."', ".$tipo.")";
+        $sql = "INSERT INTO alunos (nome, curso, senha, tipo) VALUES ('".$nome."', '".$curso."', '".$senha."', ".$tipo.")";
         // Iremos testar a nossa linha SQL, diretamente no banco de dados
         if(mysqli_query($conecta, $sql)){
             $dados = array(

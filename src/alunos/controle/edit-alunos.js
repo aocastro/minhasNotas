@@ -40,6 +40,7 @@ $(document).ready(function() {
                     $('.btn-save').addClass('btn-update').removeClass('btn-save')
                     $('#nome').val(dados[0].nome)
                     $('#curso').val(dados[0].curso)
+                    $('#senha').val(dados[0].senha)
                     $('#tipo').append(`<option value="${dados[0].tipo}" selected>${dados[0].tipo == 1 ? 'Administrador' : 'Aluno'}</option>`)
                     $('#curso').after(`<input type="hidden" name="id" value="${dados[0].id}">`)
 

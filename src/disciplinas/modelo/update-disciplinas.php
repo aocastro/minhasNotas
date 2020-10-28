@@ -3,6 +3,8 @@
     // Iremos conectar nossa função ao banco de dados
     include('../../conexao/conn.php');
 
+    session_start();
+
     $nome = $_REQUEST['nome'];
     $professor = $_REQUEST['professor'];
     $nota = $_REQUEST['nota'];
@@ -16,7 +18,7 @@
         );
     }else{
         // Criaremos uma variável para receber os comandos SQL
-        $sql = "UPDATE disciplinas SET nome = '".$nome."', professor = '".$professor."', nota = '".$nota."' WHERE id = ".$id."";
+        $sql = "UPDATE disciplinas SET nome = '".$nome."', professor = '".$professor."', nota = '".$nota."', id_alunos = ".$_SESSION['id']." WHERE id = ".$id."";
         // Iremos testar a nossa linha SQL, diretamente no banco de dados
         if(mysqli_query($conecta, $sql)){
             $dados = array('return' => true);

@@ -5,6 +5,8 @@
 
     $nome = $_REQUEST['nome'];
     $curso = $_REQUEST['curso'];
+    $senha = $_REQUEST['senha'];
+    $senha = md5($senha);
     $tipo = $_REQUEST['tipo'];
     $id = $_REQUEST['id'];
 
@@ -16,7 +18,7 @@
         );
     }else{
         // Criaremos uma variável para receber os comandos SQL
-        $sql = "UPDATE alunos SET nome = '".$nome."', curso = '".$curso."', tipo = ".$tipo." WHERE id = ".$id."";
+        $sql = "UPDATE alunos SET nome = '".$nome."', curso = '".$curso."', senha = '".$senha."', tipo = ".$tipo." WHERE id = ".$id."";
         // Iremos testar a nossa linha SQL, diretamente no banco de dados
         if(mysqli_query($conecta, $sql)){
             $dados = array('return' => true);

@@ -3,8 +3,10 @@
     // Instancio a minha conexão de banco de dados
     include('../../conexao/conn.php');
 
+    session_start();
+
     // Criar uma query de consulta ao banco de dados
-    $sql = "SELECT * FROM disciplinas";
+    $sql = "SELECT * FROM disciplinas WHERE id_alunos = ".$_SESSION['id']."";
 
     // Agora iremos executar nossa query SQL
     $resultado = mysqli_query($conecta, $sql);
